@@ -63,6 +63,7 @@ Evaluation metrics include Precision@5, Recall@5, and NDCG@5
 Load testing simulates 10 concurrent users with 100% success rate
 
 --
+
 Conclusion
 
 This project demonstrates a complete end-to-end recommendation system, integrating database design, algorithm development, API implementation, performance optimization, and evaluation. It reflects real-world production system practices and is suitable for portfolio and interview discussions.
