@@ -42,7 +42,7 @@ Feedback learning by boosting items the user has interacted with
 This ensures personalized and dynamic recommendations.
 --
 
-API Layer
+# API Layer
 
 The system provides a REST API with the following endpoints:
 
@@ -64,6 +64,6 @@ Load testing simulates 10 concurrent users with 100% success rate
 
 --
 
-Conclusion
+# Conclusion
 
 This project demonstrates a complete end-to-end recommendation system, integrating database design, algorithm development, API implementation, performance optimization, and evaluation. It reflects real-world production system practices and is suitable for portfolio and interview discussions.
