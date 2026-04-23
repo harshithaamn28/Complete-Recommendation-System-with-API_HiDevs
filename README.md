@@ -48,15 +48,6 @@ The system provides a REST API with the following endpoints:
 /metrics → returns performance data
 
 The API includes logging, request tracing, and proper error handling.
-
-Performance and Optimization
-In-memory caching is used for faster responses
-Average response time is below 200ms
-The system handles multiple concurrent requests efficiently
-Testing and Evaluation
-Unit tests are implemented to validate core functionality
-Evaluation metrics include Precision@5, Recall@5, and NDCG@5
-Load testing simulates 10 concurrent users with 100% success rate
 --
  Conclusion
 
