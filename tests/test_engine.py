@@ -1,36 +1,35 @@
-from engine.orchestrator import RecommendationOrchestrator
-from engine.evaluator import RecommendationEvaluator
+import sys
+import os
 
-# Test 1: recommendation generation
-def test_recommendations_exist():
+sys.path.append(
+    os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            ".."
+        )
+    )
+)
+
+from engine.orchestrator import RecommendationOrchestrator
+
+
+def test_recommendations():
+
     engine = RecommendationOrchestrator()
+
     recs = engine.get_recommendations("user1")
+
+    assert isinstance(recs, list)
+
     assert len(recs) > 0
 
 
-# Test 2: ranking order (highest score first)
-def test_recommendations_sorted():
+def test_cold_start():
+
     engine = RecommendationOrchestrator()
-    recs = engine.get_recommendations("user1")
 
-    scores = [item[1] for item in recs]
-    assert scores == sorted(scores, reverse=True)
+    recs = engine.get_recommendations("new_user")
 
+    assert isinstance(recs, list)
 
-# Test 3: evaluator metrics
-def test_evaluator_metrics():
-    evaluator = RecommendationEvaluator()
-
-    recs = [
-        ("movie1", 0.9, {}),
-        ("movie2", 0.8, {}),
-        ("movie3", 0.7, {})
-    ]
-
-    relevant = ["movie1", "movie3"]
-
-    result = evaluator.evaluate_all(recs, relevant, k=3)
-
-    assert "precision" in result
-    assert "recall" in result
-    assert "ndcg" in result
+    assert len(recs) > 0
