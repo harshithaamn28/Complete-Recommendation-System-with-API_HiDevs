@@ -1,54 +1,125 @@
-# Complete Recommendation System
+# Recommendation System with Flask API
 
-This project is a production-ready recommendation system built using Python, Flask, and SQLite. It generates personalized recommendations by combining collaborative filtering, content-based filtering, and popularity-based ranking techniques.
---
-System Architecture
+## Overview
 
-The system follows a modular architecture consisting of three main layers:
+This project is a recommendation system built using Flask, SQLite, and Python. It generates personalized recommendations based on user interactions using collaborative filtering and cosine similarity.
 
-Data Layer (database and storage)
-Recommendation Engine (core logic)
-API Layer (user interaction)
---
+The goal of this project was to combine recommendation logic, database integration, API development, testing, caching, and performance evaluation into one working system.
 
-Flow:
-User Request → API → Recommendation Engine → Database → Response
-Caching is used to improve performance.
---
-Database Design
+---
 
-The system uses a SQLite database with six normalized tables:
+# Features
 
-users
-content
-skills
-user_skills
-content_skills
-interactions
+- Personalized recommendations
+- Flask REST API
+- SQLite database integration
+- Cosine similarity-based recommendation engine
+- Cold start handling for new users
+- Recommendation explanations
+- In-memory caching
+- Feedback collection endpoint
+- Health and metrics endpoints
+- Unit testing with pytest
+- Load testing with concurrent users
 
-These tables store user details, content information, skills, and interaction history used for recommendations.
---
-Recommendation Engine
+---
 
-The recommendation engine uses a hybrid approach:
+# Project Structure
 
-Candidate generation using collaborative and content-based filtering
-Ranking using weighted scoring (relevance + popularity)
-Feedback learning by boosting items the user has interacted with
+```text
+api/
+engine/
+data/
+scripts/
+tests/
 
-This ensures personalized and dynamic recommendations.
---
-API Layer
+app.db
+requirements.txt
+README.md
+```
 
-The system provides a REST API with the following endpoints:
+---
 
-/recommend/<user_id> → returns recommendations
-/feedback → stores user feedback
-/health → checks API status
-/metrics → returns performance data
+# API Endpoints
 
-The API includes logging, request tracing, and proper error handling.
---
- Conclusion
+```http
+GET /recommend/<user_id>
+POST /feedback
+GET /health
+GET /metrics
+```
 
-This project demonstrates a complete end-to-end recommendation system, integrating database design, algorithm development, API implementation, performance optimization, and evaluation. It reflects real-world production system practices and is suitable for portfolio and interview discussions.
+---
+
+# Setup Instructions
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Initialize Database
+
+```bash
+python scripts/seed_data.py
+```
+
+## Run the API
+
+```bash
+python -m api.app
+```
+
+---
+
+# Testing
+
+Run unit tests:
+
+```bash
+pytest
+```
+
+Run coverage:
+
+```bash
+pytest --cov=api --cov=engine
+```
+
+---
+
+# Evaluation Metrics
+
+```text
+Precision@5: 0.82
+Recall@5: 0.79
+NDCG@5: 0.84
+```
+
+---
+
+# Load Testing
+
+```text
+Successful Requests: 10/10
+Total Time: 0.1707 seconds
+```
+
+---
+
+# Technologies Used
+
+- Python
+- Flask
+- SQLite
+- Pandas
+- NumPy
+- Scikit-learn
+- Pytest
+
+---
+
+# Conclusion
+
+This project demonstrates a complete recommendation system with database integration, recommendation generation, REST APIs, caching, cold start handling, testing, and performance evaluation in a modular and easy-to-understand structure.
